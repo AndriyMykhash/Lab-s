@@ -1,63 +1,94 @@
-package ooplaba;
-
-public class OOpLaba {
+public class Main {
 
     public static void main(String[] args) {
+
         Wallet poket = new Wallet(500);
-        
+
         poket.addMoney(50);
+        poket.spendMoney("Sport", 10);
         poket.getBalance();
-        poket.spendMoney("Sport", 30);
-        poket.spendMoney("Game", 60);
+        poket.spendMoney("Game", 30);
+        poket.addMoney(500);
+        poket.spendMoney("Meal", 60);
         poket.showInfo();
-        
     }
 }
 
+
 class Wallet{
 
-    private double money;
-    private double startedMoney = 0;
+    private float money;
+    private float startedMoney = 0;
     private final String [] funsName = new String [] {"Sport","Game","Move","Meal"};
-    private double [] spendForFuns = new double []{1,1,1,1,1};
-    private double rate [] = new double [5];
-    
-    Wallet(double money){
+    private float [] spendForFuns = new float []{0,0,0,0,0};
+    private float addedMoney;
+    private static int count = 1;
+    private float spendedMoney = 0;
+    private float rate [] = new float [5];
+
+    Wallet(float money){
         startedMoney = money;
         this.money = money;
     }
-    double addMoney(double money){
+
+    float addMoney(float money){
+        count++;
+        addedMoney += money;
         startedMoney += money;
         return this.money +=money;
     }
-    String getBalance(){
-        return this.money+"₴";
+
+    void getBalance(){
+        System.out.println("Balance: "+this.money+"₴");
     }
-    String showInfo(){
+
+    void showInfo(){
+
         rateMoney();
+        System.out.println("Added money: " + addedMoney + "₴, How much: "+count +"\nSpend:" + spendedMoney + "₴, Change: " + (startedMoney-spendedMoney));
+        System.out.println("Spend for / Rate:");
+
         for(int i = 0; i < funsName.length; i++){
+
             System.out.print(funsName[i]+" ");
-            System.out.print(rate[i]+"₴\n");
+            System.out.print(spendForFuns[i]+"₴   ");
+            System.out.print(rate[i]+"%\n");
 
         }
-        return "";
     }
-    void spendMoney(String funsName, double money){
-        
+
+    void spendMoney(String funsName, float money){
+
         switch(funsName){
-            case "Sport": spendForFuns[1] = money;
+
+            case "Sport":
+                spendedMoney += money;
+                spendForFuns[0] = money;
                 break;
-            case "Game": spendForFuns[2] = money;
+            case "Game":
+                spendedMoney += money;
+                spendForFuns[1] = money;
                 break;
-            case "Move": spendForFuns[3] = money;
+            case "Move":
+                spendedMoney += money;
+                spendForFuns[2] = money;
                 break;
-            case "Meal": spendForFuns[4] = money;
+            case "Meal":
+                spendedMoney += money;
+                spendForFuns[3] = money;
                 break;
         }
     }
+
     private void rateMoney(){
+
         for(int i = 0; i < rate.length; i++){
-            double vidsotok = (startedMoney/spendForFuns[i])*100;
+            float vidsotok = 0;
+
+            if (spendForFuns[i] < startedMoney || spendForFuns[i] > startedMoney)
+                vidsotok = (spendForFuns[i] / startedMoney) * 100;
+            else
+                continue;
             rate[i] = vidsotok;
         }
     }
