@@ -1,4 +1,4 @@
-﻿public class Bank{
+public class Banks{
     
     public static void main(String[] args) {
         Bank banks [] = new Bank[3];
