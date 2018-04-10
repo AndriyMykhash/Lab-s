@@ -3,12 +3,14 @@ package com.Mykhash;
 public class Main {
 
     public static void main(String[] args) {
-	IComand lightOff = new LightOff(new Lamp());
-        IComand lightOn = new LightOn(new Lamp());
+	Lamp lamp = new Lamp();
+	IComand lightOff = new LightOff(lamp);
+        IComand lightOn = new LightOn(lamp);
 
-        IComand airCondRun = new AirCondRun(new AirCondition());
-        IComand airCondStop = new AirCondStop(new AirCondition());
-        IComand airCondSet = new AirCondSet(new AirCondition());
+        AirCondition air = new AirCondition();
+        IComand airCondRun = new AirCondRun(air);
+        IComand airCondStop = new AirCondStop(air);
+        IComand airCondSet = new AirCondSet(air);
 
         lightOn.execute();
         lightOff.execute();
