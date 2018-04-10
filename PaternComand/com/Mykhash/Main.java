@@ -3,7 +3,7 @@ package com.Mykhash;
 public class Main {
 
     public static void main(String[] args) {
-	    IComand lightOff = new LightOff(new Lamp());
+	IComand lightOff = new LightOff(new Lamp());
         IComand lightOn = new LightOn(new Lamp());
 
         IComand airCondRun = new AirCondRun(new AirCondition());
