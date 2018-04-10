@@ -1,0 +1,13 @@
+package com.Mykhash;
+
+public class LightOn implements IComand {
+    private Lamp lamp;
+    @Override
+    public void execute() {
+        lamp.on();
+    }
+
+    LightOn(Lamp lamp){
+        this.lamp = lamp;
+    }
+}
