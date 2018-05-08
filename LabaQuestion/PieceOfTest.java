@@ -9,20 +9,20 @@ import java.util.Scanner;
 
 public class PieceOfTest {
 
-    protected String name;
-    protected List<String> askingQ = new ArrayList(); // Запитаня -> ?
-    protected List<String> pieceQest;  // відповідь на запитання
-    protected List<List> question = new ArrayList(); // куча, де є відповіді 
+    private String name;
+    private List<String> askingQ = new ArrayList(); // Запитаня -> ?
+    private List<String> pieceQest;  // відповідь на запитання
+    private List<List> question = new ArrayList(); // куча, де є відповіді 
     
-    protected String pieceAns[]; 
-    protected List<List> rightAns = new ArrayList();
+    private String pieceAns[]; 
+    private List<List> rightAns = new ArrayList();
 
-    
-    PieceOfTest(String name){
-        this.name = name;
+    void setName(){
+        Scanner sc = new Scanner(System.in); 
+        this.name = sc.next();
     }
     
-    void addQuestion(){   
+    protected void addQuestion(){   
         
         Scanner sc = new Scanner(System.in); 
         boolean stopList = true;
