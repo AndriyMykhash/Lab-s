@@ -1,0 +1,52 @@
+package laba;
+
+
+import java.util.Scanner;
+
+
+
+public class PieceOfTest {
+
+    protected String name;
+    protected String question[];
+    protected String answer[];
+    
+    PieceOfTest(String name){
+        this.name = name;
+    }
+    
+    void addQandA(){
+        
+        Scanner sc = new Scanner(System.in); 
+        boolean stopList = true;
+        boolean stopBloc = true;
+        String quest = "";
+                
+        for(int i = 0; stopBloc; i++){
+         
+            while(stopList){
+                
+                if((quest = sc.next()).compareToIgnoreCase("exit") == 0)
+                    stopList = false;
+                
+                else if(quest.compareToIgnoreCase("exitBloc") == 0){
+                    stopBloc = false;
+                    stopList = false;
+                }
+                    
+                else{
+                    question[i] = new String();
+                    answer[i] = new String();
+                    
+                    question[i] = quest;
+                    answer[i] = sc.next();
+                }
+            }
+            stopList = true;        
+        }
+    }
+    
+    
+}
+
+
